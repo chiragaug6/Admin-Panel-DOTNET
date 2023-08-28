@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "City Add Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model StartAdminPanel.Areas.LOC_City.Models.LOC_CityModel
+
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post" asp-action="Save">
+            @Html.HiddenFor(x=>x.CityID)
+            @*<div class="form-group">
+            <label>Country Id</label>
+            <input type="text" asp-for="CountryId" placeholder="Enter Country Id" />
+            </div>*@
+            <div class="form-group">
+                <label>City Name</label>
+                <input type="text" asp-for="CityName" class="form-control" placeholder="Enter City Name" />
+            </div>
+            <div class="form-group">
+                <label>City Code</label>
+                <input type="text" asp-for="Citycode" class="form-control" placeholder="Enter City Code" />
+            </div>
+
+            @*<div class="form-group">
+                <label for="categoryDropdown">Select a State:</label>
+                <select id="categoryDropdown" name="SelectedCategoryId">
+                    <option value="">Select...</option>
+                    @foreach (var category in Model)
+                    {
+
+                </select>
+            </div>*@
+
+            <div class="form-group">
+                <label>State ID</label>
+                <input type="text" asp-for="StateID" class="form-control" placeholder="Enter State Id" />
+            </div>
+
+            <div class="form-group">
+                <label>Country ID</label>
+                <input type="text" asp-for="CountryID" class="form-control" placeholder="Enter Country ID" />
+            </div>
+            @*<div class="form-group">
+            <label>Created</label>
+            <input type="date" asp-for="Created" class="form-control" />
+            </div>
+            <div class="form-group">
+            <label>Modified</label>
+            <input type="date" asp-for="Modified" class="form-control" />
+            </div>*@
+            <hr />
+            <button type="submit" asp-controller="LOC_City" class="btn btn btn-primary" asp-action="Save">Add City</button>
+
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+

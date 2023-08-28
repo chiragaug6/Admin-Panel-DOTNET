@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "LOC_StateList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using System.Data
+@model DataTable
+
+    
+<div class="container p-3">
+    <div class="row p-4">
+        <div class="col-6">
+            <h2 class="text-primary">State List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="LOC_State" asp-action="Add" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> &nbsp; Create New State
+            </a>
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>State ID</th>
+                <th>Country Name</th>
+                <th>State Name</th>
+                <th>State Code</th>
+                <th>Created</th>
+                <th>Modified</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow dr in Model.Rows)
+            {
+                <tr>
+                    <td>@dr["StateID"]</td>
+                    <td>@dr["CountryName"]</td>
+                    <td>@dr["StateName"]</td>
+                    <td>@dr["StateCode"]</td>
+                    <td>@Convert.ToDateTime(dr["Created"]).ToString("dd-mm-yyyy")</td>
+                    <td>@Convert.ToDateTime(dr["Modified"]).ToString("dd-mm-yyyy")</td>
+                    <td>
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="LOC_State" asp-action="Add" asp-route-StateID="@dr["StateID"]"
+                               class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i>Edit</a>
+                            <a asp-controller="LOC_State" asp-action="Delete" asp-route-StateId="@dr["StateID"]"
+                               class="btn btn-danger mx-2"><i class="bi bi-trash3"></i> Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

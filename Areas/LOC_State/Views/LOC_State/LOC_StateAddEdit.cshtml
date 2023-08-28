@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Country Add Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model StartAdminPanel.Areas.LOC_State.Models.LOC_StateModel
+
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post" asp-action="Save">
+            @Html.HiddenFor(x=>x.StateId)
+            @*<div class="form-group">
+            <label>Country Id</label>
+            <input type="text" asp-for="CountryId" placeholder="Enter Country Id" />
+            </div>*@
+            <div class="form-group">
+                <label>State Name</label>
+                <input type="text" asp-for="StateName" class="form-control" placeholder="Enter State Name" />
+            </div>
+            <div class="form-group">
+                <label>State Code</label>
+                <input type="text" asp-for="StateCode" class="form-control" placeholder="Enter State Code" />
+            </div>
+            <div class="form-group">
+                <label>Country Id</label>
+                <input type="text" asp-for="CountryId" class="form-control" placeholder="Enter Country Id" />
+            </div>
+            @*<div class="form-group">
+            <label>Created</label>
+            <input type="date" asp-for="Created" class="form-control" />
+            </div>
+            <div class="form-group">
+            <label>Modified</label>
+            <input type="date" asp-for="Modified" class="form-control" />
+            </div>*@
+            <hr />
+            <button type="submit" asp-controller="LOC_State" class="btn btn btn-primary" asp-action="Save">Add State</button>
+        </form>
+    </div>
+</div>

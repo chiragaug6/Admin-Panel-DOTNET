@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewData["Title"] = "LOC_CountryList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using System.Data
+@model DataTable
+
+<div class="container p-3">
+    <div class="row p-4">
+        <div class="col-6">
+            <h2 class="text-primary">Country List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="LOC_Country" asp-action="Add" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> &nbsp; Create New Country
+            </a>
+        </div>
+    </div>
+    <br />
+    <br />
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Country ID</th>
+                <th>Country Name</th>
+                <th>Country Code</th>
+                <th>Created</th>
+                <th>Modified</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow dr in Model.Rows)
+            {
+                <tr>
+                    <td>@dr["CountryID"]</td>
+                    <td>@dr["CountryName"]</td>
+                    <td>@dr["CountryCode"]</td>
+                    <td>@Convert.ToDateTime(dr["Created"]).ToString("dd-mm-yyyy")</td>
+                    <td>@Convert.ToDateTime(dr["Modified"]).ToString("dd-mm-yyyy")</td>
+                    <td>
+                        <div class="w-75 btn-group" role="group">
+                            <a asp-controller="LOC_Country" asp-action="Add" asp-route-CountryID="@dr["CountryID"]"
+                               class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i>Edit</a>
+                              <a asp-controller="LOC_Country" asp-action="Delete" asp-route-CountryId="@dr["CountryID"]"
+                               class="btn btn-danger mx-2"><i class="bi bi-trash3"></i> Delete</a>
+                        </div>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
